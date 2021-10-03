@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(
+    0deg,
+    #7d04ee,
+    #7780ff
+  
+  );
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  
+}
+
+/* styling the outer music container */
+.music-container {
+  position: relative;
+
+  width: 30rem;
+  height: 35rem;
+  background-image:url('https://i.pinimg.com/736x/95/9d/85/959d852118b8d1a1223e101733c1ed0b.jpg');
+border-radius: 2rem;
+box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0,0, 0);
+padding: 3rem;
+text-align: center;
+top: 20px;
+}
+
+.img-container {
+  position: relative;
+  width: 110px;
+}
+
+/* styling the image to look like a disc by placing a small circle in it*/
+/* .img-container::after {
+  position: relative;
+  content: '';
+  background-color: rgb(24, 1, 1);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left:180%;
+  width: 20px;
+  height: 20px;
+  top: 10rem;
+  transform: translate(-50%, 50%);
+} */
+
+/* using animation to make the image rotate continiously when music is playing */
+.img-container img {
+  
+  position: relative;
+
+  border-radius: 50%;
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  bottom: 0;
+  left:80%;
+  top: 5rem;
+  animation: rotate 15s ease-in-out infinite;
+
+  animation-play-state: paused;
+}
+
+/* making sure the image rotates only when the music is playing */
+.music-container.play .img-container img {
+  animation-play-state: running;
+}
+/* 
+/* creating the animation keyframe and setting the image to rotate 360 degrees continiously */
+/* @keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+} */ 
+
+
+.navigation {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* styling the navigation buttons */
+.action-btn {
+  position: relative;
+
+  border: 0;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 400PX 20px;
+  
+}
+
+.action-btn.action-btn-big {
+  position: relative;
+
+  font-size: 30px;
+  outline: none;
+}
+
+.action-btn:focus {
+  outline: 0;
+}
+
+/* styling the music-info div by placing it under the music container */
+.music-info {
+  position: relative;
+
+  background-color: rgba(97, 138, 253, 0.5);
+  border-radius: 15px 15px 0 0;
+  position: absolute;
+  top: 25rem;
+  left: 100px;
+  width: calc(70% - 20px);
+  padding: 0px 0px 10px 0px;
+  opacity: 0;
+  transform: translateY(0%);
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
+}
+
+/* making the music info pop up when the music playing using the transform property*/
+.music-container.play .music-info {
+  position: absolute;
+
+
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.music-info h4 {
+  margin: 0;
+}
+
+/* styling the song progress container */
+.progress-container {
+  position: absolute;
+
+
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 4px;
+  width: 100%;
+}
+
+/* styling the actual progress bar and making it flow along with the song*/
+.progress {
+  position: absolute;
+
+  background-color: #ff0040;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+
+
+@media screen and (max-width:800px){
+
+  .music-container{
+    position: relative;
+
+  width: 10px;
+  height: 30rem;
+  background-image:url('https://i.pinimg.com/736x/95/9d/85/959d852118b8d1a1223e101733c1ed0b.jpg');
+border-radius: 2rem;
+box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0,0, 0);
+padding: 3rem;
+text-align: center;
+top:-20px;
+
+  }
+
+  .img-container {
+    position: relative;
+    width: 80px;
+
+  }
+  /* .img-container::after {
+    position: relative;
+    content: '';
+    background-color: rgb(68, 10, 10);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%;
+    left:185%;
+    width: 20px;
+    height: 20px;
+    top: 5rem;
+    transform: translate(-50%, 50%);
+  } */
+  
+
+  .img-container img {
+  
+    position: relative;
+  
+    border-radius: 50%;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    bottom: 0;
+    left:70%;
+    top: 0rem;
+    animation: rotate 3s linear infinite;
+  
+    animation-play-state: paused;
+  }
+
+  .action-btn {
+    position: relative;
+
+    border: 0;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 390PX 20px;
+    
+  }
+  .music-info {
+    position: relative;
+  
+    background-color: rgba(195, 211, 255, 0.5);
+    border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    top: 22rem;
+    left: 90px;
+    width: calc(65% - 20px);
+    padding: 10px 10px 30px 0px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    z-index: 0;
+ 
+  
+  }
+
+  body {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(
+      0deg,
+      #637afd,
+      #57d2e7
+    
+    );
+    
+    
+    
+  }
+}
+
+@media screen and (max-width:1400px){
+
+  .music-container{
+    position: absolute;
+
+  width: 470px;
+  height:600px;
+background-image:url('https://i.pinimg.com/736x/95/9d/85/959d852118b8d1a1223e101733c1ed0b.jpg');
+background-size: contain;
+background-repeat: no-repeat;
+border-radius: 2rem;
+box-shadow: 0 1.2rem 3rem 0.5rem rgba(0, 0,0, 0);
+padding: 3rem;
+text-align: center;
+top:10px;
+
+  }
+
+  .img-container {
+    position: relative;
+    width: 80px;
+
+  }
+  /* .img-container::after {
+    position: relative;
+    content: '';
+    background-color: rgb(68, 10, 10);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%;
+    left:470%;
+    width: 20px;
+    height: 20px;
+    top: 9rem;
+    transform: translate(-50%, 50%);
+  } */
+  
+
+  .img-container img {
+  
+    position: relative;
+  
+    border-radius: 50%;
+    object-fit: cover;
+    height: 300px;
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    left:270%;
+    top: 0rem;
+    animation: rotate 3s linear infinite;
+  
+    animation-play-state: paused;
+  }
+
+  .action-btn {
+    position: relative;
+  
+    top:-50px;
+    border-radius: 50px;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 500PX 20px;
+    
+  }
+  #play{
+    font-size: 20px;
+    border-radius: 30px;
+    width: 75px;
+  }
+  .music-info {
+    position: relative;
+  
+    background-color: transparent;
+    border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    top: 29rem;
+    left: 140px;
+    width: calc(45% - 20px);
+    padding: 10px 10px 30px 0px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    z-index: 0;
+ 
+  
+  }
+
+  body {
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(
+      0deg,
+      #637afd,
+      #57d2e7
+    
+    );
+    
+    
+    
+  }
+}
